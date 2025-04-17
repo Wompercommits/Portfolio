@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>My Portfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="home" class="section home">
+  <div class="container">
+    <h2>Hi, I'm Talha!</h2>
+    <p>Web Developer in training, building awesome projects.</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </div>
+</section>
+
+<section id="about" class="section about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p>I am a self-taught developer passionate about making websites that are fast, modern, and beautiful. Currently learning full-stack development!</p>
+  </div>
+</section>
+
+<section id="projects" class="section projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3></a>Landing Page</h3>
+        <p>A modern landing page built with HTML, CSS, and JavaScript animations. <a href="https://www.google.com" target="_blank" class="btn"></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="container">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Talha. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Smooth scrolling
+const links = document.querySelectorAll('nav ul li a');
+for (const link of links) {
+  link.addEventListener('click', smoothScroll);
+}
+
+function smoothScroll(e) {
+  e.preventDefault();
+  const targetId = this.getAttribute("href");
+  document.querySelector(targetId).scrollIntoView({ behavior: "smooth" });
+}
+
+// Active link highlight
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section');
+  const scrollPos = window.scrollY;
+
+  sections.forEach(section => {
+    if (scrollPos >= section.offsetTop - 100) {
+      document.querySelector('nav ul li a.active')?.classList.remove('active');
+      document.querySelector(`nav ul li a[href='#${section.id}']`)?.classList.add('active');
+    }
+  });
+});
+
+// Fake form submission alert
+const form = document.getElementById('contact-form');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thanks for your message! I will get back to you soon.');
+  form.reset();
+});
+</script>
+
+</body>
+</html>
